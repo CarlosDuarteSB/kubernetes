@@ -351,7 +351,7 @@ spec:
   ports:
   - appProtocol: http
     name: http
-    port: 13000
+    port: 11000
     protocol: TCP
     targetPort: http
   - appProtocol: https
@@ -462,7 +462,7 @@ spec:
           timeoutSeconds: 1
         name: controller
         ports:
-        - containerPort: 13000
+        - containerPort: 11000
           name: http
           protocol: TCP
         - containerPort: 443
