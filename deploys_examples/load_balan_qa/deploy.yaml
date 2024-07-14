@@ -427,7 +427,7 @@ spec:
         - /nginx-ingress-controller
         - --publish-service=$(POD_NAMESPACE)/ingress-nginx-qa-controller
         - --election-id=ingress-nginx-qa-leader
-        - --controller-class=k8s.io/ingress-nginx-qa
+        - --controller-class=k8s.io/ingress-nginx
         - --ingress-class=nginx
         - --configmap=$(POD_NAMESPACE)/ingress-nginx-qa-controller
         - --validating-webhook=:8443
@@ -445,7 +445,7 @@ spec:
               fieldPath: metadata.namespace
         - name: LD_PRELOAD
           value: /usr/local/lib/libmimalloc.so
-        image: registry.k8s.io/ingress-nginx-qa/controller:v1.10.0@sha256:42b3f0e5d0846876b1791cd3afeb5f1cbbe4259d6f35651dcc1b5c980925379c
+        image: registry.k8s.io/ingress-nginx/controller:v1.10.0@sha256:42b3f0e5d0846876b1791cd3afeb5f1cbbe4259d6f35651dcc1b5c980925379c
         imagePullPolicy: IfNotPresent
         lifecycle:
           preStop:
@@ -546,7 +546,7 @@ spec:
           valueFrom:
             fieldRef:
               fieldPath: metadata.namespace
-        image: registry.k8s.io/ingress-nginx-qa/kube-webhook-certgen:v1.4.0@sha256:44d1d0e9f19c63f58b380c5fddaca7cf22c7cee564adeff365225a5df5ef3334
+        image: registry.k8s.io/ingress-nginx/kube-webhook-certgen:v1.4.0@sha256:44d1d0e9f19c63f58b380c5fddaca7cf22c7cee564adeff365225a5df5ef3334
         imagePullPolicy: IfNotPresent
         name: create
         securityContext:
@@ -599,7 +599,7 @@ spec:
           valueFrom:
             fieldRef:
               fieldPath: metadata.namespace
-        image: registry.k8s.io/ingress-nginx-qa/kube-webhook-certgen:v1.4.0@sha256:44d1d0e9f19c63f58b380c5fddaca7cf22c7cee564adeff365225a5df5ef3334
+        image: registry.k8s.io/ingress-nginx/kube-webhook-certgen:v1.4.0@sha256:44d1d0e9f19c63f58b380c5fddaca7cf22c7cee564adeff365225a5df5ef3334
         imagePullPolicy: IfNotPresent
         name: patch
         securityContext:
@@ -628,7 +628,7 @@ metadata:
     app.kubernetes.io/version: 1.10.0
   name: nginx
 spec:
-  controller: k8s.io/ingress-nginx-qa
+  controller: k8s.io/ingress-nginx
 ---
 apiVersion: admissionregistration.k8s.io/v1
 kind: ValidatingWebhookConfiguration
