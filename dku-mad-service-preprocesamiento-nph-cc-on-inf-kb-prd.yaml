@@ -73,7 +73,7 @@ spec:
           value: "true"
         - name: DKU_unifiedMonitoring
           value: "1"
-        image: gcr.io/sb-ecosistemaanalitico-lago/dataiku-mad/apimodel-preprocesamiento-nph-cc-on-inf-kb-prd:r-2024-10-18-23-10-15-403
+        image: gcr.io/sb-ecosistemaanalitico-lago/dataiku-mad/apimodel-preprocesamiento-nph-cc-on-inf-kb-prd:r-2024-10-18-23-09-15-403
         imagePullPolicy: IfNotPresent
         livenessProbe:
           failureThreshold: 3
