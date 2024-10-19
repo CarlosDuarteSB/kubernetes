@@ -2,7 +2,7 @@ apiVersion: apps/v1
 kind: Deployment
 metadata:
   annotations:
-    autopilot.gke.io/resource-adjustment: '{"input":{"containers":[{"limits":{"cpu":"500m","ephemeral-storage":"2Gi","memory":"3000Mi"},"requests":{"cpu":"500m","ephemeral-storage":"1Gi","memory":"2Gi"},"name":"apinode-container"}]},"output":{"containers":[{"limits":{"cpu":"500m","ephemeral-storage":"2Gi","memory":"3Gi"},"requests":{"cpu":"500m","ephemeral-storage":"1Gi","memory":"2Gi"},"name":"apinode-container"}]},"modified":true}'
+    autopilot.gke.io/resource-adjustment: '{"input":{"containers":[{"limits":{"cpu":"1","ephemeral-storage":"2Gi","memory":"3Gi"},"requests":{"cpu":"1","ephemeral-storage":"1Gi","memory":"2Gi"},"name":"apinode-container"}]},"output":{"containers":[{"limits":{"cpu":"1","ephemeral-storage":"2Gi","memory":"3Gi"},"requests":{"cpu":"500m","ephemeral-storage":"1Gi","memory":"2Gi"},"name":"apinode-container"}]},"modified":true}'
     autopilot.gke.io/warden-version: 3.0.39
     dataiku.com/dku-apideployer-deployment-id: preprocesamiento_nph_cc-on-inf-kb-prd
     dataiku.com/dku-exec-submitter: user_gkudss_04
@@ -73,7 +73,7 @@ spec:
           value: "true"
         - name: DKU_unifiedMonitoring
           value: "1"
-        image: gcr.io/sb-ecosistemaanalitico-lago/dataiku-mad/apimodel-preprocesamiento-nph-cc-on-inf-kb-prd:r-2024-10-18-23-09-15-403
+        image: gcr.io/sb-ecosistemaanalitico-lago/dataiku-mad/apimodel-preprocesamiento-nph-cc-on-inf-kb-prd:r-2024-10-18-23-10-15-403
         imagePullPolicy: IfNotPresent
         livenessProbe:
           failureThreshold: 3
@@ -101,11 +101,11 @@ spec:
           timeoutSeconds: 1
         resources:
           limits:
-            cpu: 500m
+            cpu: 2
             ephemeral-storage: 2Gi
             memory: 3Gi
           requests:
-            cpu: 500m
+            cpu: 1
             ephemeral-storage: 1Gi
             memory: 2Gi
         securityContext:
