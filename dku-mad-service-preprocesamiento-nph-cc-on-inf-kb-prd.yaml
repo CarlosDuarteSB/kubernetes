@@ -1,0 +1,148 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  annotations:
+    autopilot.gke.io/resource-adjustment: '{"input":{"containers":[{"limits":{"cpu":"500m","ephemeral-storage":"2Gi","memory":"3000Mi"},"requests":{"cpu":"500m","ephemeral-storage":"1Gi","memory":"2Gi"},"name":"apinode-container"}]},"output":{"containers":[{"limits":{"cpu":"500m","ephemeral-storage":"2Gi","memory":"3Gi"},"requests":{"cpu":"500m","ephemeral-storage":"1Gi","memory":"2Gi"},"name":"apinode-container"}]},"modified":true}'
+    autopilot.gke.io/warden-version: 3.0.39
+    dataiku.com/dku-apideployer-deployment-id: preprocesamiento_nph_cc-on-inf-kb-prd
+    dataiku.com/dku-exec-submitter: user_gkudss_04
+    dataiku.com/dku-execution-type: API_DEPLOYER_DEPLOYMENT
+    dataiku.com/dku-install-id: J4QtgsdXRi15PQYi0bJMHtB3
+    deployment.kubernetes.io/revision: "6"
+    kubectl.kubernetes.io/last-applied-configuration: |
+      {"apiVersion":"apps/v1","kind":"Deployment","metadata":{"annotations":{"dataiku.com/dku-apideployer-deployment-id":"preprocesamiento_nph_cc-on-inf-kb-prd","dataiku.com/dku-exec-submitter":"user_gkudss_04","dataiku.com/dku-execution-type":"API_DEPLOYER_DEPLOYMENT","dataiku.com/dku-install-id":"J4QtgsdXRi15PQYi0bJMHtB3"},"labels":{"dataiku.com/dku-apideployer-deployment-id":"preprocesamiento_nph_cc-on-inf-kb-prd","dataiku.com/dku-apideployer-infra-id":"inf-kb-prd","dataiku.com/dku-apideployer-service-id":"preprocesamiento_nph_cc","dataiku.com/dku-exec-submitter":"user_gkudss_04","dataiku.com/dku-execution-id":"kozvxcp","dataiku.com/dku-execution-type":"api_deployer_deployment","dataiku.com/dku-install-id":"j4qtgsdxri15pqyi0bjmhtb3","dataiku.com/dku-node-id":"sb-dataiku-deploy-mlops"},"name":"dku-mad-preprocesamiento-nph-cc-on-inf-kb-prd","namespace":"ns-prod"},"spec":{"progressDeadlineSeconds":600,"replicas":3,"selector":{"matchLabels":{"dataiku.com/dku-apideployer-deployment-id":"preprocesamiento_nph_cc-on-inf-kb-prd","dataiku.com/dku-apideployer-infra-id":"inf-kb-prd"}},"template":{"metadata":{"annotations":{"dataiku.com/dku-apideployer-deployment-id":"preprocesamiento_nph_cc-on-inf-kb-prd","dataiku.com/dku-exec-submitter":"user_gkudss_04","dataiku.com/dku-execution-type":"API_DEPLOYER_DEPLOYMENT","dataiku.com/dku-install-id":"J4QtgsdXRi15PQYi0bJMHtB3"},"labels":{"dataiku.com/dku-apideployer-deployment-id":"preprocesamiento_nph_cc-on-inf-kb-prd","dataiku.com/dku-apideployer-infra-id":"inf-kb-prd","dataiku.com/dku-apideployer-service-id":"preprocesamiento_nph_cc","dataiku.com/dku-exec-submitter":"user_gkudss_04","dataiku.com/dku-execution-id":"kozvxcp","dataiku.com/dku-execution-type":"api_deployer_deployment","dataiku.com/dku-install-id":"j4qtgsdxri15pqyi0bjmhtb3","dataiku.com/dku-node-id":"sb-dataiku-deploy-mlops"}},"spec":{"containers":[{"env":[{"name":"DKU_GRAPHITE_ADDITIONAL_PREFIX","valueFrom":{"fieldRef":{"fieldPath":"metadata.name"}}},{"name":"DKU_APIDEPLOYER_K8S_NAME","valueFrom":{"fieldRef":{"fieldPath":"metadata.name"}}},{"name":"DKU_APINODE_FAIL_IF_START_ABORTED","value":"true"},{"name":"DKU_unifiedMonitoring","value":"1"}],"image":"gcr.io/sb-ecosistemaanalitico-lago/dataiku-mad/apimodel-preprocesamiento-nph-cc-on-inf-kb-prd:r-2024-10-18-23-09-15-403","livenessProbe":{"httpGet":{"path":"/monitoring/api/preprocesamiento_nph_cc/isAliveSimple","port":12000},"initialDelaySeconds":600,"periodSeconds":50},"name":"apinode-container","ports":[{"containerPort":12000}],"readinessProbe":{"httpGet":{"path":"/monitoring/api/preprocesamiento_nph_cc/isAliveSimple","port":12000},"initialDelaySeconds":20,"periodSeconds":10},"resources":{"limits":{"memory":"4000Mi"}}}]}}}}
+  creationTimestamp: "2024-09-02T19:55:32Z"
+  generation: 40
+  labels:
+    dataiku.com/dku-apideployer-deployment-id: preprocesamiento_nph_cc-on-inf-kb-prd
+    dataiku.com/dku-apideployer-infra-id: inf-kb-prd
+    dataiku.com/dku-apideployer-service-id: preprocesamiento_nph_cc
+    dataiku.com/dku-exec-submitter: user_gkudss_04
+    dataiku.com/dku-execution-id: kozvxcp
+    dataiku.com/dku-execution-type: api_deployer_deployment
+    dataiku.com/dku-install-id: j4qtgsdxri15pqyi0bjmhtb3
+    dataiku.com/dku-node-id: sb-dataiku-deploy-mlops
+  name: dku-mad-preprocesamiento-nph-cc-on-inf-kb-prd
+  namespace: ns-prod
+  resourceVersion: "123074091"
+  uid: 92e59401-53d4-4c47-95d5-1af9b89e925a
+spec:
+  progressDeadlineSeconds: 600
+  replicas: 1
+  revisionHistoryLimit: 10
+  selector:
+    matchLabels:
+      dataiku.com/dku-apideployer-deployment-id: preprocesamiento_nph_cc-on-inf-kb-prd
+      dataiku.com/dku-apideployer-infra-id: inf-kb-prd
+  strategy:
+    rollingUpdate:
+      maxSurge: 25%
+      maxUnavailable: 25%
+    type: RollingUpdate
+  template:
+    metadata:
+      annotations:
+        dataiku.com/dku-apideployer-deployment-id: preprocesamiento_nph_cc-on-inf-kb-prd
+        dataiku.com/dku-exec-submitter: user_gkudss_04
+        dataiku.com/dku-execution-type: API_DEPLOYER_DEPLOYMENT
+        dataiku.com/dku-install-id: J4QtgsdXRi15PQYi0bJMHtB3
+      creationTimestamp: null
+      labels:
+        dataiku.com/dku-apideployer-deployment-id: preprocesamiento_nph_cc-on-inf-kb-prd
+        dataiku.com/dku-apideployer-infra-id: inf-kb-prd
+        dataiku.com/dku-apideployer-service-id: preprocesamiento_nph_cc
+        dataiku.com/dku-exec-submitter: user_gkudss_04
+        dataiku.com/dku-execution-id: kozvxcp
+        dataiku.com/dku-execution-type: api_deployer_deployment
+        dataiku.com/dku-install-id: j4qtgsdxri15pqyi0bjmhtb3
+        dataiku.com/dku-node-id: sb-dataiku-deploy-mlops
+    spec:
+      containers:
+      - env:
+        - name: DKU_GRAPHITE_ADDITIONAL_PREFIX
+          valueFrom:
+            fieldRef:
+              apiVersion: v1
+              fieldPath: metadata.name
+        - name: DKU_APIDEPLOYER_K8S_NAME
+          valueFrom:
+            fieldRef:
+              apiVersion: v1
+              fieldPath: metadata.name
+        - name: DKU_APINODE_FAIL_IF_START_ABORTED
+          value: "true"
+        - name: DKU_unifiedMonitoring
+          value: "1"
+        image: gcr.io/sb-ecosistemaanalitico-lago/dataiku-mad/apimodel-preprocesamiento-nph-cc-on-inf-kb-prd:r-2024-10-18-23-09-15-403
+        imagePullPolicy: IfNotPresent
+        livenessProbe:
+          failureThreshold: 3
+          httpGet:
+            path: /monitoring/api/preprocesamiento_nph_cc/isAliveSimple
+            port: 12000
+            scheme: HTTP
+          initialDelaySeconds: 600
+          periodSeconds: 50
+          successThreshold: 1
+          timeoutSeconds: 1
+        name: apinode-container
+        ports:
+        - containerPort: 12000
+          protocol: TCP
+        readinessProbe:
+          failureThreshold: 3
+          httpGet:
+            path: /monitoring/api/preprocesamiento_nph_cc/isAliveSimple
+            port: 12000
+            scheme: HTTP
+          initialDelaySeconds: 20
+          periodSeconds: 10
+          successThreshold: 1
+          timeoutSeconds: 1
+        resources:
+          limits:
+            cpu: 500m
+            ephemeral-storage: 1Gi
+            memory: 2Gi
+          requests:
+            cpu: 500m
+            ephemeral-storage: 1Gi
+            memory: 2Gi
+        securityContext:
+          capabilities:
+            drop:
+            - NET_RAW
+        terminationMessagePath: /dev/termination-log
+        terminationMessagePolicy: File
+      dnsPolicy: ClusterFirst
+      restartPolicy: Always
+      schedulerName: default-scheduler
+      securityContext:
+        seccompProfile:
+          type: RuntimeDefault
+      terminationGracePeriodSeconds: 30
+      tolerations:
+      - effect: NoSchedule
+        key: kubernetes.io/arch
+        operator: Equal
+        value: amd64
+status:
+  availableReplicas: 1
+  conditions:
+  - lastTransitionTime: "2024-09-02T19:55:32Z"
+    lastUpdateTime: "2024-10-18T23:18:09Z"
+    message: ReplicaSet "dku-mad-preprocesamiento-nph-cc-on-inf-kb-prd-6d775ff445"
+      has successfully progressed.
+    reason: NewReplicaSetAvailable
+    status: "True"
+    type: Progressing
+  - lastTransitionTime: "2024-10-18T23:46:41Z"
+    lastUpdateTime: "2024-10-18T23:46:41Z"
+    message: Deployment has minimum availability.
+    reason: MinimumReplicasAvailable
+    status: "True"
+    type: Available
+  observedGeneration: 40
+  readyReplicas: 1
+  replicas: 1
+  updatedReplicas: 1
